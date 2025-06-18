@@ -10,13 +10,14 @@ create table usuario(
     Email varchar (65),
     senha varchar (80),
     pontuacao int,
+    criação datetime,
 );
 
 -- ========================== Jogos ==========================
 create table jogos(
     ID int identity (1,1) primary key,
     nome varchar (70),
-	pontuação int 
+	link varchar(200)
 );
 
 create table Jogos_usuario(
@@ -33,7 +34,8 @@ create table Jogos_usuario(
 create table ranking(
       Id int identity (1,1) primary key,
 	  pontuação int,
-	  classificação int
+	  classificação int,
+	  nome varchar (70),
 );
 
 
@@ -43,4 +45,20 @@ create table rank_usuario(
     id_ranking int,
     constraint usuario_id foreign key (id_usuario) references jogos(id),
     constraint ranking_id foreign key (id_ranking) references usuario(ID)
+);
+--==========================contato==================================
+create table contato(
+        Id int identity (1,1) primary key,
+		mensagem varchar (1000),
+		nome varchar (70),
+		email varchar(65),
+		titulo varchar (40),
+);
+--==========================feedback==================================
+create table feedback(
+           id int identity (1,1) primary key,
+		   titulo varchar (40),
+		   email varchar (65),
+		   mensagem varchar(1000),
+		   satisfação varchar (3),
 );
